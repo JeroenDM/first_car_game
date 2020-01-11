@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://SimpleGreenCarTopView.png" type="Texture" id=2]
+[ext_resource path="res://images/background.svg" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.5464
+height = 32.889
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 69.0524
+
+[node name="Node2D" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="SimpleGreenCarTopView" type="Sprite" parent="KinematicBody2D"]
+scale = Vector2( 0.0742844, 0.0742844 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 0.487671, 0 )
+rotation = 1.5708
+z_index = 2
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+position = Vector2( 141.309, 71.6494 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 513.828, 298.162 )
+texture = ExtResource( 3 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/KinematicBody2D"]
+position = Vector2( 141.309, -156.567 )
+shape = SubResource( 2 )
